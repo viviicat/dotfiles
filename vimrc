@@ -161,8 +161,6 @@ set visualbell t_vb=
 
 set rtp+=$GOROOT/misc/vim
 
-set directory=~/.vim/swap
-
 command Love :!love .
 
 call pathogen#infect()
