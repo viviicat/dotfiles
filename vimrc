@@ -165,8 +165,6 @@ set directory=~/.vim/swap
 
 command Love :!love .
 
-let g:miniBufExplMapCTabSwitchBufs = 1
-
 call pathogen#infect()
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
