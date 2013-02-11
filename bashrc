@@ -99,6 +99,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
+PINK_COLOR="\[\e[1;35m\]"
 
 function prompt_command {
     local RETURN_CODE="$?"
@@ -134,12 +135,13 @@ function prompt_command {
         PROMPT_PREFIX="$PROMPT_PREFIX$USER_COLOR$REFS$ASCII_RESET "
     fi
     
-    FORTUNE=$(fortune)
-	    
-    PS1="$ASCII_BOLD[$USER_COLOR\u $HOST_COLOR\h $DATE_COLOR$DATE_STRING $TIME_COLOR$TIME_STRING$ASCII_RESET$ASCII_BOLD]\n$PINK_COLOR$FORTUNE$ASCII_RESET\n$PROMPT_COLOR$PROMPT_PREFIX$ASCII_RESET\w \\\$$ASCII_RESET "
+    PS1="$ASCII_BOLD[$USER_COLOR\u $HOST_COLOR\h $DATE_COLOR$DATE_STRING $TIME_COLOR$TIME_STRING$ASCII_RESET$ASCII_BOLD]\n$PROMPT_COLOR$PROMPT_PREFIX$ASCII_RESET\w \\\$$ASCII_RESET "
 }
 export PROMPT_COMMAND=prompt_command
 
 if [ "$COLORTERM" == "gnome-terminal" ]; then
   export TERM=xterm-256color
 fi
+
+fortune | cowsay
+echo
