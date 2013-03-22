@@ -8,5 +8,5 @@
 	path = vim/bundle/vim-buffergator
 	url = https://github.com/jeetsukumaran/vim-buffergator.git
 [submodule "vim/vim-golang"]
-	path = vim/vim-golang
+	path = vim/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
