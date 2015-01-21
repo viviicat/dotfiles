@@ -17,10 +17,23 @@ colorscheme xoria256
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'pbrisbin/vim-syntax-shakespeare'
+
+call vundle#end()
+
 " Attempt to determine the type of a file based on its name and possibly its
 " contents.  Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
-filetype indent plugin on
+
+filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
@@ -162,8 +175,6 @@ set visualbell t_vb=
 set rtp+=$GOROOT/misc/vim
 
 command Love :!love .
-
-call pathogen#infect()
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
