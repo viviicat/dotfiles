@@ -17,6 +17,8 @@ colorscheme xoria256
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
+filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
