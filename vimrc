@@ -28,6 +28,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 
