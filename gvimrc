@@ -12,5 +12,3 @@ set lines=78
 vsp
 " even out the splits
 wincmd =
-
-NERDTree
