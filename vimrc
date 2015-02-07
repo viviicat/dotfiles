@@ -35,6 +35,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'enomsg/vim-haskellConcealPlus'
 
 " Unite
 "   ------------- VERY IMPORTANT ------------
