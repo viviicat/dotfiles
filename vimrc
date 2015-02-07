@@ -26,7 +26,6 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
 Plugin 'bling/vim-airline'
@@ -36,6 +35,16 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+
+" Unite
+"   ------------- VERY IMPORTANT ------------
+"   you have to go to .vim/plugin/vimproc.vim and do a ./make
+"   -----------------------------------------
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/unite.vim'
+
+" Ag
+Plugin 'rking/ag.vim'
 
 call vundle#end()
 
@@ -193,3 +202,21 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 
 let g:airline_powerline_fonts = 1
 
+" ----------------------------
+"       File Management
+" ----------------------------
+let g:unite_source_history_yank_enable = 1
+try
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" search a file in the filetree
+nnoremap <space><space> :<C-u>Unite -start-insert file_rec/async<cr>
+nnoremap <space>b :<C-u>Unite buffer<CR>
+" reset not it is <C-l> normally
+:nnoremap <space>r <Plug>(unite_restart)
+
+nnoremap <space>/ :Ag 
+
+let g:agprg="ag -i --column"
