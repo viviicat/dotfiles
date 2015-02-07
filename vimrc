@@ -167,7 +167,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 map <F8> :!make && ./Jam <CR>
 map <F6> :!love .<CR><CR>
 
-set guifont=Monospace\ 9
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 9
 set cpoptions+=$
 
 "------------------------------------------------------------
@@ -183,4 +183,6 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+let g:airline_powerline_fonts = 1
 
