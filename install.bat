@@ -11,19 +11,23 @@ if '%errorlevel%' NEQ '0' (
 	goto end
 )
 
+SET /P INSTALLFONTS=Install fonts (Y/[N])?
+IF /I "%INSTALLFONTS%" NEQ "Y" GOTO AfterFonts
 "./Ubuntu Mono derivative Powerline.ttf"
 "./Ubuntu Mono derivative Powerline Bold Italic.ttf"
 "./Ubuntu Mono derivative Powerline Bold.ttf"
 "./Ubuntu Mono derivative Powerline Italic.ttf"
 
+:AfterFonts
+
 set VIMDIR=%programfiles(x86)%\vim
 
 echo VIMDIR=%VIMDIR%
 
-echo copying _gvimrc
-cp _gvimrc "%VIMDIR%"
-echo copying _vimrc
-cp _vimrc "%VIMDIR%"
+echo linking _gvimrc
+ln _gvimrc "%VIMDIR%\_gvimrc"
+echo linking _vimrc
+ln _vimrc "%VIMDIR%\_vimrc"
 echo copying vim74 folder
 cp -r vim74 "%VIMDIR%"
 
