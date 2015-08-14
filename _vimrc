@@ -19,35 +19,21 @@ set nocompatible
 
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'pbrisbin/vim-syntax-shakespeare'
-Plugin 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'jnwhiteh/vim-golang'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " SnipMate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'enomsg/vim-haskellConcealPlus'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'enomsg/vim-haskellConcealPlus'
 
-" Unite
-"   ------------- VERY IMPORTANT ------------
-"   you have to go to .vim/plugin/vimproc.vim and do a ./make
-"   -----------------------------------------
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-
-" Ag
-Plugin 'rking/ag.vim'
-
-call vundle#end()
+call plug#end()
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents.  Use this to allow intelligent auto-indenting for each filetype,
@@ -168,7 +154,6 @@ set expandtab
 "set shiftwidth=2
 "set tabstop=2
 
-
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -181,10 +166,7 @@ set expandtab
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
-map <F8> :!make && ./Jam <CR>
-map <F6> :!love .<CR><CR>
 
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 9
 set cpoptions+=$
 
 "------------------------------------------------------------
@@ -192,32 +174,9 @@ set cpoptions+=$
 
 set visualbell t_vb=
 
-set rtp+=$GOROOT/misc/vim
-
-command Love :!love .
-
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 let g:airline_powerline_fonts = 1
-
-" ----------------------------
-"       File Management
-" ----------------------------
-let g:unite_source_history_yank_enable = 1
-try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-" search a file in the filetree
-nnoremap <space><space> :<C-u>Unite -start-insert file_rec/async<cr>
-nnoremap <space>b :<C-u>Unite buffer<CR>
-" reset not it is <C-l> normally
-:nnoremap <space>r <Plug>(unite_restart)
-
-nnoremap <space>/ :Ag 
-
-let g:agprg="ag -i --column"
