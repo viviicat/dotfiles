@@ -184,3 +184,7 @@ let g:airline_powerline_fonts = 1
 
 " vimoutliner fixes
 au BufEnter *.otl setlocal tabstop=2 shiftwidth=2
+
+" Fun! This collapses all folds, opens the fold one past the cursor, closes,
+" and opens recursively. Keeps stuff neat.
+nnoremap <leader>v zMzvzczO
