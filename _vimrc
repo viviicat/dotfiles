@@ -32,6 +32,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'enomsg/vim-haskellConcealPlus'
+Plug 'vimoutliner/vimoutliner'
 
 call plug#end()
 
@@ -180,3 +181,6 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 let g:airline_powerline_fonts = 1
+
+" vimoutliner fixes
+au BufEnter *.otl setlocal tabstop=2 shiftwidth=2
