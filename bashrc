@@ -145,3 +145,15 @@ fi
 
 fortune | cowthink -f tux
 echo
+
+function t {
+  local project=$(basename `pwd`);
+  local tp=( $(task _projects | grep $project) );
+
+  if [[ -n $tp ]]; then
+    task "$@" project:$project;
+  else
+    task "$@"
+  fi
+}
+

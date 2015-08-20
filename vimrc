@@ -29,6 +29,7 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'bling/vim-airline'
 Plug 'wting/rust.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'blindFS/vim-taskwarrior'
 
 " SnipMate
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -203,11 +204,10 @@ let g:airline_powerline_fonts = 1
 "       File Management
 " ----------------------------
 let g:unite_source_history_yank_enable = 1
-try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
+
+let g:unite_source_rec_async_command=['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
 " search a file in the filetree
 nnoremap <space><space> :<C-u>Unite -start-insert file_rec/async<cr>
 nnoremap <space>b :<C-u>Unite buffer<CR>
@@ -233,3 +233,6 @@ if !has('gui_running')
   let g:airline_left_sep=' '
   let g:airline_left_alt_sep=' '
 endif
+
+" No more pesky shift
+nnoremap ; :
