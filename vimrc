@@ -29,6 +29,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
 Plugin 'bling/vim-airline'
+Plugin 'wting/rust.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " SnipMate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -184,7 +186,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 map <F8> :!make && ./Jam <CR>
 map <F6> :!love .<CR><CR>
 
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 9
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
 set cpoptions+=$
 
 "------------------------------------------------------------
@@ -221,3 +223,6 @@ nnoremap <space>b :<C-u>Unite buffer<CR>
 nnoremap <space>/ :Ag 
 
 let g:agprg="ag -i --column"
+
+" Hardtime -- kicking the hjkl habit
+let g:hardtime_default_on = 1
