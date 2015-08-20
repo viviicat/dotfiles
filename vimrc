@@ -19,37 +19,35 @@ set nocompatible
 
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'pbrisbin/vim-syntax-shakespeare'
-Plugin 'bling/vim-airline'
-Plugin 'wting/rust.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plug 'vim-scripts/genutils'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'jnwhiteh/vim-golang'
+Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'bling/vim-airline'
+Plug 'wting/rust.vim'
+Plug 'Valloric/YouCompleteMe'
 
 " SnipMate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'enomsg/vim-haskellConcealPlus'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'enomsg/vim-haskellConcealPlus'
 
 " Unite
 "   ------------- VERY IMPORTANT ------------
 "   you have to go to .vim/plugin/vimproc.vim and do a ./make
 "   -----------------------------------------
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/unite.vim'
 
 " Ag
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
-call vundle#end()
+call plug#end()
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents.  Use this to allow intelligent auto-indenting for each filetype,
@@ -113,6 +111,9 @@ set backspace=indent,eol,start
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
 
+" incremental search
+set incsearch
+
 " Stop certain movements from always going to the first character of a line.
 " While this behaviour deviates from that of Vi, it does what most users
 " coming from other editors would expect.
@@ -170,7 +171,6 @@ set expandtab
 "set shiftwidth=2
 "set tabstop=2
 
-
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -183,8 +183,6 @@ set expandtab
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
-map <F8> :!make && ./Jam <CR>
-map <F6> :!love .<CR><CR>
 
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
 set cpoptions+=$
@@ -193,10 +191,6 @@ set cpoptions+=$
 "
 
 set visualbell t_vb=
-
-set rtp+=$GOROOT/misc/vim
-
-command Love :!love .
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -224,5 +218,18 @@ nnoremap <space>/ :Ag
 
 let g:agprg="ag -i --column"
 
-" Hardtime -- kicking the hjkl habit
-let g:hardtime_default_on = 1
+
+
+" vimoutliner fixes
+au BufEnter *.otl setlocal tabstop=2 shiftwidth=2
+
+" Fun! This collapses all folds, opens the fold one past the cursor, closes,
+" and opens recursively. Keeps stuff neat.
+nnoremap <leader>v zMzvzczO
+
+if !has('gui_running')
+  let g:airline_right_sep=' '
+  let g:airline_right_alt_sep=' '
+  let g:airline_left_sep=' '
+  let g:airline_left_alt_sep=' '
+endif
