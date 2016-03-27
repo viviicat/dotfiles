@@ -143,12 +143,20 @@ if [ "$COLORTERM" == "gnome-terminal" ]; then
   export TERM=xterm-256color
 fi
 
-fortune | cowthink -f tux
+printf '~%.0s' {1..80}
+echo 
+fortune 
+printf '~%.0s' {1..80}
 echo
+
+read -rsp $'[...]' -n1 key
+clear
 
 function t {
   local project=$(basename `pwd`);
   local tp=( $(task _projects | grep $project) );
+
+  clear
 
   if [[ -n $tp ]]; then
     task "$@" project:$project;
@@ -157,3 +165,6 @@ function t {
   fi
 }
 
+eval $(thefuck --alias)
+
+set -o vi
